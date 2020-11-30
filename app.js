@@ -34,6 +34,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// to remove warnings for mongoose
+mongoose.set("useCreateIndex", true);
+mongoose.set("useNewUrlParser", true);
+mongoose.set("useUnifiedTopology", true);
+
 // connect mongodb
 mongoose.connect(
   "mongodb://testUser:password@localhost:27017/userDB?authSource=userDB",
@@ -46,11 +51,6 @@ mongoose.connect(
     }
   }
 );
-
-// to remove warnings for mongoose
-mongoose.set("useCreateIndex", true);
-mongoose.set("useNewUrlParser", true);
-mongoose.set("useUnifiedTopology", true);
 
 // Schema
 const userSchema = new mongoose.Schema({
